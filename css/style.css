@@ -16,13 +16,26 @@
 
 
 .game__visor{
-    width: 70%;
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
 
 }
 
 .game__card{
     width: 150px;
     height: 150px;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.game__card-rigth{
+    border: 2px solid green;
+}
+
+.game__card-wrong{
+    border: 2px solid red;
 }
 
 .game__card-selected{

@@ -49,20 +49,59 @@ const reverseCard = (event) => {
         //guardamos el alt de la imagen que tiene un numero del array en la variable
 
         const index = event.target.getAttribute("alt");
-        event.target.src = "./assets/images/" + frutas[index];
+        event.target.src = "./assets/images/fruits/" + frutas[index];
 
         //aumentamos el contador
         raisedCards++;
 
-    } else if (raisedCards >= 2) {
-       if(checkCouples()){
+    }
 
-       } else{
+    if (raisedCards === 2) {
+        checkCouples();
+        raisedCards = 0;
 
-       }
     }
 }
 
+const checkCouples = () => {
+    const visibleCards = document.querySelectorAll('img[src^="./assets/images/fruits/"]');
+    console.log(visibleCards);
+
+    const card1 = visibleCards[0];
+    console.log(card1);
+    const card2 = visibleCards[1];
+    const card1Element = visibleCards[0];
+    const card2Element = visibleCards[1];
+
+    if (card1.src === card2.src) {
+        card1.classList.add("game__card-rigth");
+        card2.classList.add("game__card-rigth");
+
+        setInterval(() => {
+            card1.remove();
+            card2.remove();
+            card1.classList.remove("game__card-rigth");
+            card2.classList.remove("game__card-rigth");
+        }, 2000)
+
+
+        return true;
+    } else {
+        card1.classList.add("game__card-wrong");
+        card2.classList.add("game__card-wrong");
+
+        setInterval(() => {
+            card1.src = "../assets/images/reverse_card.png";
+            card2.src = "../assets/images/reverse_card.png";
+            card1.classList.remove("game__card-wrong");
+            card2.classList.remove("game__card-wrong");
+        }, 2000)
+
+
+        return false;
+    }
+
+}
 
 //EVENTOS
 start__btn.addEventListener("click", startGame);
