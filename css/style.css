@@ -1,0 +1,31 @@
+.title{
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+.game__container{
+    display: none;
+    justify-content: space-around;
+}
+
+.game__header{
+    width: 20%;
+
+}
+
+
+.game__visor{
+    width: 70%;
+
+}
+
+.game__card{
+    width: 150px;
+    height: 150px;
+}
+
+.game__card-selected{
+    width: 150px;
+    height: 150px;
+}
