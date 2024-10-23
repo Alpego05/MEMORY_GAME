@@ -7,7 +7,7 @@ const start = document.getElementById("start");
 const start__btn = document.getElementById("start__btn");
 const game__visor = document.getElementById("game__visor");
 const game = document.getElementById("game");
-
+const game__logs = document.getElementById("game__logs");
 
 //como le hacemos para que solo se levanten 2
 
@@ -22,7 +22,6 @@ const startGame = (event) => {
     }
 
 }
-
 
 //funcion para barajar las cartas del array frutas
 const barajarCartas = () => {
@@ -40,65 +39,74 @@ const barajarCartas = () => {
 
 }
 
+//elementos que necesitamos en reverseCard
 let raisedCards = 0;
+let card1 = null;
+let card2 = null;
+let canClick = true;//variable para que cuando haya una pareja  ya no se pueda hacer click
 
 //funcion para dar la vuelta a las cartas
 const reverseCard = (event) => {
-    //ponemos la condicion de que solo se pueda levantar si son 2
-    if (event.target.nodeName === "IMG" && raisedCards < 2) {
-        //guardamos el alt de la imagen que tiene un numero del array en la variable
 
-        const index = event.target.getAttribute("alt");
-        event.target.src = "./assets/images/fruits/" + frutas[index];
+    if (canClick) { 
+        if (event.target.nodeName === "IMG" && raisedCards < 2) {
+            const index = event.target.getAttribute("alt");
+            event.target.src = "./assets/images/fruits/" + frutas[index];
+            raisedCards++;
 
-        //aumentamos el contador
-        raisedCards++;
+            if (raisedCards === 1) {
+                card1 = event.target; 
+            } else if (raisedCards === 2) {
+                card2 = event.target; 
 
-    }
-
-    if (raisedCards === 2) {
-        checkCouples();
-        raisedCards = 0;
-
+                if (card1.getAttribute("alt") === card2.getAttribute("alt")) {
+                    game__logs.textContent = "No vale pulsar la misma carta!!";
+                    raisedCards--;
+                    canClick = false;
+                    checkCouples(card1, card2, raisedCards);
+                    canClick = true;
+                } else {
+                    canClick = false;
+                    checkCouples(card1, card2, raisedCards);
+                    raisedCards = 0;
+                    canClick = true;
+                }
+            }
+        }
     }
 }
 
-const checkCouples = () => {
-    const visibleCards = document.querySelectorAll('img[src^="./assets/images/fruits/"]');
-    console.log(visibleCards);
+const checkCouples = (card1, card2, raisedCards) => {
 
-    const card1 = visibleCards[0];
-    console.log(card1);
-    const card2 = visibleCards[1];
-    const card1Element = visibleCards[0];
-    const card2Element = visibleCards[1];
-
-    if (card1.src === card2.src) {
-        card1.classList.add("game__card-rigth");
-        card2.classList.add("game__card-rigth");
-
-        setInterval(() => {
-            card1.remove();
-            card2.remove();
-            card1.classList.remove("game__card-rigth");
-            card2.classList.remove("game__card-rigth");
-        }, 2000)
-
-
-        return true;
-    } else {
+    if (raisedCards === 1) {
         card1.classList.add("game__card-wrong");
-        card2.classList.add("game__card-wrong");
 
-        setInterval(() => {
-            card1.src = "../assets/images/reverse_card.png";
-            card2.src = "../assets/images/reverse_card.png";
-            card1.classList.remove("game__card-wrong");
-            card2.classList.remove("game__card-wrong");
-        }, 2000)
+    } else if (raisedCards === 2) {
+        if (card1.src === card2.src) {
+            card1.classList.add("game__card-right");
+            card2.classList.add("game__card-right");
 
+            setTimeout(() => {
+                card1.remove();
+                card2.remove();
+                card1.classList.remove("game__card-right");
+                card2.classList.remove("game__card-right");
+            }, 2000)
 
-        return false;
+            return true;
+        } else {
+            card1.classList.add("game__card-wrong");
+            card2.classList.add("game__card-wrong");
+
+            setTimeout(() => {
+                card1.src = "../assets/images/reverse_card.png";
+                card2.src = "../assets/images/reverse_card.png";
+                card1.classList.remove("game__card-wrong");
+                card2.classList.remove("game__card-wrong");
+            }, 2000)
+
+            return false;
+        }
     }
 
 }
@@ -106,6 +114,3 @@ const checkCouples = () => {
 //EVENTOS
 start__btn.addEventListener("click", startGame);
 game__visor.addEventListener("click", reverseCard);
-
-
-
