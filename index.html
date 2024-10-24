@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
-    
+
 </head>
 
 <body>
@@ -15,13 +15,29 @@
         <h1 class="title">MEMORY</h1>
 
         <section class="start__container" id="start">
-            <p>Pon a prueba tu mente con este divertido y desafiante Juego de Memoria. El objetivo es encontrar todas
-                las parejas de cartas idénticas lo más rápido posible. Al comenzar, las cartas estarán boca abajo y
-                tendrás que ir volteándolas dos a la vez para intentar formar pares. Cada vez que descubras dos cartas
-                iguales, permanecerán visibles, pero si no coinciden, se volverán a ocultar. ¡Desafía tus habilidades de
-                concentración y memoria mientras te enfrentas a distintos niveles de dificultad!</p>
 
             <p>¿Estás listo para aceptar el reto y demostrar que tienes la mejor memoria? ¡A jugar!</p>
+
+            <h2>Explicación del Sistema de Puntaje</h2>
+            <p>A continuación se detallan las reglas del sistema de puntaje:</p>
+
+            <h3>Puntos básicos:</h3>
+            <ul>
+                <li><strong>Fallas:</strong> Por cada fallo, se restan 1 punto.</li>
+                <li><strong>Aciertos:</strong> Por cada acierto, se suman 5 puntos.</li>
+            </ul>
+
+            <h3>Bonificaciones por tiempo:</h3>
+            <ul>
+                <li><strong>30 segundos:</strong> Multiplicas el puntaje total por 2.</li>
+                <li><strong>1 minuto:</strong> Multiplicas el puntaje total por 1.5.</li>
+                <li><strong>1:30 minutos:</strong> Multiplicas el puntaje total por 1.2.</li>
+                <li><strong>Más de 1:30 minutos:</strong> No se aplica bonificación, el puntaje se queda igual.</li>
+                <li><strong>si debes puntos a la máquina esta sumará 20 puntos automaticamente</strong> </li>
+            </ul>
+
+
+
 
             <button id="start__btn"> INICIAR JUEGO </button>
         </section>
@@ -35,28 +51,29 @@
                 <h3 id="game__logs"><!-- Poner errores o idica cuando ha acabado el juego --></h3>
             </div>
 
-                
+
             <div class="game__visor" id="game__visor">
-                
+
+
                 <img class="game__card" src="./assets/images/reverse_card.png" alt="0">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="1">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="2">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="3">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="4">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="5">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="6">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="7">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="8">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="9">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="10">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="11">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="12">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="13">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="14">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="15">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="16">
-                    <img class="game__card" src="./assets/images/reverse_card.png" alt="17">
-                    
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="1">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="2">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="3">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="4">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="5">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="6">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="7">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="8">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="9">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="10">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="11">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="12">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="13">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="14">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="15">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="16">
+                <img class="game__card" src="./assets/images/reverse_card.png" alt="17">
+
             </div>
 
 
@@ -80,21 +97,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

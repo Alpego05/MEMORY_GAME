@@ -1,7 +1,40 @@
+@font-face {
+    font-family: title;
+    src: url("../assets/fonts/Retroica.ttf");
+}
+
+@font-face {
+    font-family: poppins;
+    src: url("../assets/fonts/Poppins-Light.ttf");
+}
+
+html{
+    background-image: url("../assets/images/bg.jpg");
+    font-family: poppins;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+  
+
+.start__container{
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 10px;
+    margin: 20px;
+    padding-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.868);
+    border-radius: 10px;
+}
+
 .title{
     text-align: center;
     margin-top: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    font-family: title;
+    color: rgb(64, 171, 54);
 }
 
 .game__container{
@@ -16,26 +49,41 @@
 
 
 .game__visor{
-    width: 75%;
+    max-width: 60%;
     display: flex;
+    margin: 30px;
+    background-color: rgb(198, 240, 198);
+    border: 2px solid green;
+    border-radius: 10px;
     flex-wrap: wrap;
+    justify-content: center;
+    
+    
 
+}
+
+
+.game__button{
+    border: 0;
+    background-color: transparent;
 }
 
 .game__card{
-    width: 150px;
-    height: 150px;
-    margin: 2px;
-    padding: 2px;
-    border-radius: 10px;
+    margin: 5px;
+    width: 130px;
+    height: 130px;
+    border-radius: 15px;
+    transition: transform 0.5s;
 }
 
-.game__card-rigth{
-    border: 2px solid green;
+.game__card:hover{
+    transform: scale(1.1);
 }
+
 
 .game__card-wrong{
-    border: 2px solid red;
+    outline: 2px solid red;
+
 }
 
 .game__card-selected{
