@@ -16,37 +16,47 @@
 
         <section class="start__container" id="start">
 
-            <p>¿Estás listo para aceptar el reto y demostrar que tienes la mejor memoria? ¡A jugar!</p>
+            <div>
+                <h2 class="start__title">¿Estás listo para aceptar el reto y demostrar que tienes la mejor memoria? ¡A
+                    jugar!</h2>
 
-            <h2>Explicación del Sistema de Puntaje</h2>
-            <p>A continuación se detallan las reglas del sistema de puntaje:</p>
+                <h3 class="start__subtitle">Explicación del Sistema de Puntaje</h3>
+                <p>A continuación se detallan las reglas del sistema de puntaje:</p>
 
-            <h3>Puntos básicos:</h3>
-            <ul>
-                <li><strong>Fallas:</strong> Por cada fallo, se restan 1 punto.</li>
-                <li><strong>Aciertos:</strong> Por cada acierto, se suman 5 puntos.</li>
-            </ul>
+                <h3 class="start__subtitle">Puntos básicos:</h3>
+                <ul>
+                    <li><strong class="start__text">Fallas:</strong> Por cada fallo, se restan 1 punto.</li>
+                    <li><strong class="start__text">Aciertos:</strong> Por cada acierto, se suman 5 puntos.</li>
+                </ul>
 
-            <h3>Bonificaciones por tiempo:</h3>
-            <ul>
-                <li><strong>30 segundos:</strong> Multiplicas el puntaje total por 2.</li>
-                <li><strong>1 minuto:</strong> Multiplicas el puntaje total por 1.5.</li>
-                <li><strong>1:30 minutos:</strong> Multiplicas el puntaje total por 1.2.</li>
-                <li><strong>Más de 1:30 minutos:</strong> No se aplica bonificación, el puntaje se queda igual.</li>
-                <li><strong>si debes puntos a la máquina esta sumará 20 puntos automaticamente</strong> </li>
-            </ul>
+                <h3 class="start__subtitle">Bonificaciones por tiempo:</h3>
+                <ul>
+                    <li><strong class="start__text">30 segundos:</strong> Multiplicas el puntaje total por 2.</li>
+                    <li><strong class="start__text">1 minuto:</strong> Multiplicas el puntaje total por 1.5.</li>
+                    <li><strong class="start__text">1:30 minutos:</strong> Multiplicas el puntaje total por 1.2.</li>
+                    <li><strong class="start__text">Más de 1:30 minutos:</strong> No se aplica bonificación, el puntaje
+                        se queda igual.</li>
+                    <li><strong class="start__text">si debes puntos a la máquina esta sumará 20 puntos
+                            automaticamente</strong> </li>
+                </ul>
 
 
+            </div>
 
+            <div class="start__form">
+                <input type="text" id="playerName" class="start__input" placeholder="Introduce tu nombre" required>
+                <button  id="start__btn" class="btn__startgame"> INICIAR JUEGO </button>
+            </div>
+                
 
-            <button id="start__btn"> INICIAR JUEGO </button>
         </section>
 
 
         <section class="game__container" id="game">
 
             <div class="game__header">
-                <h2>Tiempo: <span id="time"><!-- poner tiempo aqui cronometro ascendente --> </span></h2>
+                <h2> Jugador: <span id="nameP1"><!-- poner nombre del jugador aqui --></span></h2>
+                <h2>Tiempo: <span id="time">  <span id="time__min">00</span>:<span id="time__secs">00</span> <!-- poner tiempo aqui cronometro ascendente --> </span></h2>
                 <h2>Puntaje: <span id="score"> <!-- poner puntaje aqui --> </span></h2>
                 <h3 id="game__logs"><!-- Poner errores o idica cuando ha acabado el juego --></h3>
             </div>
@@ -73,11 +83,17 @@
                 <img class="game__card" src="./assets/images/reverse_card.png" alt="15">
                 <img class="game__card" src="./assets/images/reverse_card.png" alt="16">
                 <img class="game__card" src="./assets/images/reverse_card.png" alt="17">
-
             </div>
+        </section>
 
 
+        <section class="win__container" id="win">
+            <img class="win__img" src="./assets/images/yippee.gif">
 
+            <div class="win__text">
+                <h2 class="win__text-2">GRACIAS POR JUGAR</h2>
+           </div>
+            
 
         </section>
 

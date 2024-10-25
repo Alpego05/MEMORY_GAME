@@ -8,6 +8,20 @@
     src: url("../assets/fonts/Poppins-Light.ttf");
 }
 
+
+
+:root{
+    --strawberry: #FCAFFF;
+    --dragon_fruit: #E61B5B;
+    --banana: #FFFF3F;
+    --sky: #A5E7FF;
+    --blueberry: #55A8BD;
+    --watermelon: #5CAA46;
+    --pear: #3E6E32;
+}
+
+
+
 html{
     background-image: url("../assets/images/bg.jpg");
     font-family: poppins;
@@ -17,16 +31,16 @@ html{
     
 }
 
-  
-
 .start__container{
     padding-left: 70px;
     padding-right: 70px;
     padding-top: 10px;
-    margin: 20px;
+    margin: 60px 20px 20px 20px;
     padding-bottom: 10px;
     background-color: rgba(255, 255, 255, 0.868);
     border-radius: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .title{
@@ -34,9 +48,68 @@ html{
     margin-top: 25px;
     margin-bottom: 20px;
     font-family: title;
-    color: rgb(64, 171, 54);
+    color: var(--blueberry);
 }
 
+.start__title{
+    color: var(--blueberry);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.start__subtitle{
+    color: var(--dragon_fruit);
+}
+
+.start__text{
+    text-decoration: underline;
+    
+}
+
+.start__form{
+    display: flex;
+    flex-direction: column;
+}
+
+.start__input{
+    width: 200px;
+    padding: 6px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--sky);
+    
+    
+
+}
+
+.start__input::placeholder{
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+.btn__startgame{
+    padding: 15px;
+    border-radius: 10px;
+    font-family: title;
+    background-color: var(--sky);
+    color: var(--blueberry);
+    border: 2px solid var(--blueberry);
+    transition: transform 0.5s;
+
+}
+
+.btn__startgame:hover{
+    background-color: var(--dragon_fruit);
+    color: var(--banana);
+    border: 2px solid var(--banana);
+    transform: scale(1.1);
+    
+
+
+   
+}
 .game__container{
     display: none;
     justify-content: space-around;
@@ -89,4 +162,24 @@ html{
 .game__card-selected{
     width: 150px;
     height: 150px;
+}
+
+.win__container{
+    display: none;
+    text-align: center;
+}
+
+.win__img{
+    width: 650px;
+}
+
+.win__text{
+    color: var(--blueberry);
+    padding: 5px;
+    background-image: url("../assets/images/bg2.jpg");
+    background-position: center;
+    background-size: cover;
+    font-size: 20px;
+    font-family: title;
+    width: 100%;
 }
