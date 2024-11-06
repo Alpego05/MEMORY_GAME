@@ -15,6 +15,12 @@ const win = document.getElementById("win");
 const playerName = document.getElementById("playerName");
 const nameP1 = document.getElementById("nameP1");
 
+const time__min = document.getElementById("time__min");
+const time__secs = document.getElementById("time__secs");
+
+const finalScore = document.getElementById("finalScore");
+const reset = document.getElementById("reset");
+
 let player = ""; //name for the player used in startGame.
 
 //FUNCTIONS
@@ -63,7 +69,11 @@ let clicks = 0; //total of click in the game used for start the clock function
 //funcion to reverse cards and send it to checkCouples for check if they are the same
 
 const reverseCard = (event) => {
-    if (canClick && checkWin) {
+    if (!timeStart) {
+        timer();  //Starts the timer
+    }
+
+    if (canClick) {
         game__logs.textContent = "";
         if (event.target.nodeName === "IMG" && raisedCards < 2) {
             //we use the alt of the images for relate the array´s positions
@@ -80,13 +90,14 @@ const reverseCard = (event) => {
                 //and decrease the counter for let the player choose another one
                 if (card1.getAttribute("alt") === card2.getAttribute("alt")) {
                     game__logs.textContent = "No vale pulsar la misma carta!!";
+                    game__logs.classList.add("text_red");
                     raisedCards--;
                     canClick = false;
                     checkCouples(card1, card2, raisedCards);
                     //timeout 2 s for use click again
                     setTimeout(() => {
                         canClick = true;
-                    }, 2000);
+                    }, 1000);
 
                 } else {
                     canClick = false;
@@ -99,7 +110,7 @@ const reverseCard = (event) => {
                         raisedCards = 0;
                         canClick = true;
                         checkWin();
-                    }, 2000);
+                    }, 1000);
                 }
             }
         }
@@ -132,7 +143,7 @@ const checkCouples = (card1, card2, raisedCards) => {
 
             //increase the couter of couples.
             cfw++;
-            
+
             //timeout for them to disapear
             setTimeout(() => {
                 card1.style.opacity = "0%";
@@ -142,7 +153,7 @@ const checkCouples = (card1, card2, raisedCards) => {
                 card1.parentNode.replaceChild(divElement, card1);
                 card2.parentNode.replaceChild(divElement2, card2);
 
-            }, 2000)
+            }, 1000)
 
             condition = "couple"; //take the condition as  couple
 
@@ -156,7 +167,7 @@ const checkCouples = (card1, card2, raisedCards) => {
                 card2.src = "../assets/images/reverse_card.png";
                 card1.classList.remove("game__card-wrong");
                 card2.classList.remove("game__card-wrong");
-            }, 2000)
+            }, 1000)
 
             condition = "no-couple"; //take the condition as no-couple
             return condition;
@@ -165,10 +176,38 @@ const checkCouples = (card1, card2, raisedCards) => {
 
 }
 
+//TIME FUNCTIONS
+
+let minutes = 0;
+let seconds = 0;
+let timeInterval;
+let timeStart = false;
+
+const timer = () => {
+    timeStart = true; // Change the booleam
+    timeInterval = setInterval(updateTime, 1000);
+
+};
+
+const updateTime = () => {
+    seconds++; // Increments seconds every 1 sec
+
+    if (seconds === 60) { // 60 secs for 1 min and reset
+        seconds = 0;
+        minutes++;
+    }
+
+    // Update the text
+    time__secs.textContent = seconds < 10 ? "0" + seconds : seconds;
+    time__min.textContent = minutes < 10 ? "0" + minutes : minutes;
+};
+
+
 let score_sum = 0;
 
 const checkScore = (condition) => {
-    if (checkWin) {
+
+    if (!checkWin()) {
         console.log("se actualizan los puntos");
         switch (condition) {
 
@@ -187,44 +226,39 @@ const checkScore = (condition) => {
                 break;
         }
 
-    } else {
+    } else { //if the game has ended
         console.log("juego terminado, bonificación de puntos");
 
         if (score_sum <= 0) {
-            score_sum + 20;
+            score_sum += 20;
             score.textContent = score_sum;
 
-        }else{
+        } else {
+            let multiplier = 1; // Multiplier initial value
+
+            if (minutes === 0 && seconds <= 30) {
+                multiplier = 2; //*2 
+            } else if (minutes === 1 && seconds === 0) {
+                multiplier = 1.5; // *1.5 
+            } else if (minutes === 1 && seconds <= 30) {
+                multiplier = 1.2; //*1.2
+            } 
+        
+            // Calculates the final score
+            let Score = Math.round(score_sum * multiplier);
+            finalScore.textContent = Score;
+            // return Score;
 
         }
-
-
-        //logic of time score
-
-        // let puntaje = score_sum;
-        // let tiempo = 0;
-        // let bonificacion = 0;
-
-        // if (tiempo <= 30) {
-        //     bonificacion = puntaje * 2;
-        // } else if (tiempo <= 60) {
-        //     bonificacion = puntaje * 1.5;
-        // } else if (tiempo <= 90) {
-        //     bonificacion = puntaje * 1.2;
-        // } else {
-        //     bonificacion = puntaje * 1;
-        // }
-
-        // score_sum += bonificacion;
-        // score.textContent = score_sum;
-
-
     }
 
 
 
 
 }
+
+
+
 
 
 const checkWin = () => {
@@ -235,6 +269,11 @@ const checkWin = () => {
     if (cfw === 9) {
         console.log("Sin imagenes");
         game__logs.textContent = "Has Ganado!!!!!";
+        game__logs.classList.remove("text_red");
+        game__logs.classList.add("text_blue");
+
+        //stops the timer
+        clearInterval(timeInterval);
 
         //shows the section id win if the player has won.
         setTimeout(() => {
@@ -242,64 +281,26 @@ const checkWin = () => {
             win.style.display = "block";
         }, 2000)
 
-
         return true;
+
 
     } else {
         console.log("hay imagenes");
+
         return false;
 
     }
 }
 
-//clock still in process / NO FUNCIONA
-const clock = () => {
-    if (sinTiempo) {
-        seg.textContent = "29";
-        puntuacion.textContent = "00";
-        y = true;
-        sinTiempo = false;
-        segundos = setInterval(resta, 1000);
-        cente = setInterval(centesimas, 10);
-        random();
-    }
 
+const resetGame =  () => {
+   location.reload();
 }
-
-
-
-const resta = () => {
-    if (y == true) {
-        let s = "0" + (seg.textContent -= 1);
-        seg.textContent = s.slice(-2);
-
-    }
-
-}
-
-const centesimas = () => {
-    if (y == true) {
-        if (cent.textContent == ":00")
-            cent.textContent = ":99";
-        let c = cent.textContent.slice(-2);
-        c -= 1;
-        let t = cent.textContent = "0" + c;
-        t = t.slice(-2);
-        cent.textContent = ":" + t;
-
-        if (seg.textContent == "00" && cent.textContent.slice(-2) == "00") {
-            clearInterval(segundos);
-            clearInterval(cente);
-            sinTiempo = true;
-        }
-    }
-
-}
-
 
 
 
 
 //EVENTOS
+reset.addEventListener("click", resetGame);
 start__btn.addEventListener("click", startGame);
 game__visor.addEventListener("click", reverseCard);

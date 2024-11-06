@@ -89,7 +89,7 @@ html{
     
 }
 
-.btn__startgame{
+.btn__game{
     padding: 15px;
     border-radius: 10px;
     font-family: title;
@@ -100,7 +100,7 @@ html{
 
 }
 
-.btn__startgame:hover{
+.btn__game:hover{
     background-color: var(--dragon_fruit);
     color: var(--banana);
     border: 2px solid var(--banana);
@@ -123,12 +123,15 @@ html{
 
 .game__visor{
     max-width: 60%;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
     margin: 30px;
     background-color: rgb(198, 240, 198);
     border: 2px solid green;
     border-radius: 10px;
     flex-wrap: wrap;
+    gap: 5px;
     justify-content: center;
     
     
@@ -174,12 +177,28 @@ html{
 }
 
 .win__text{
-    color: var(--blueberry);
     padding: 5px;
-    background-image: url("../assets/images/bg2.jpg");
+    margin: 0 auto;
+    width: 500px;
+    color: var(--blueberry);
+    font-family: poppins;
+    background-color: rgba(255, 255, 255, 0.868);
+    border-radius: 10px;
+    /* background-image: url("../assets/images/bg2.jpg");
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
     font-size: 20px;
-    font-family: title;
-    width: 100%;
+    border: 2px solid var(--blueberry);;
+    
+    /* width: 100%; */
+}
+
+
+
+.text_red{
+    color: red;
+}
+
+.text_blue{
+color: var(--blueberry);
 }
