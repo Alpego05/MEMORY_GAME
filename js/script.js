@@ -207,7 +207,8 @@ let score_sum = 0;
 
 const checkScore = (condition) => {
 
-    if (!checkWin()) {
+   
+       
         console.log("se actualizan los puntos");
         switch (condition) {
 
@@ -226,7 +227,8 @@ const checkScore = (condition) => {
                 break;
         }
 
-    } else { //if the game has ended
+     //if the game has ended
+     if (checkWin()) {
         console.log("juego terminado, bonificación de puntos");
 
         if (score_sum <= 0) {
@@ -235,22 +237,28 @@ const checkScore = (condition) => {
 
         } else {
             let multiplier = 1; // Multiplier initial value
+            
+            if (time__min.textContent === 0 && time__secs.textContent <= 30) {
+                multiplier = 2; 
 
-            if (minutes === 0 && seconds <= 30) {
-                multiplier = 2; //*2 
-            } else if (minutes === 1 && seconds === 0) {
-                multiplier = 1.5; // *1.5 
-            } else if (minutes === 1 && seconds <= 30) {
-                multiplier = 1.2; //*1.2
-            } 
-        
+            } else if ( (time__min.textContent === 1 && time__secs.textContent === 0) || time__secs.textContent <= 59 ) {
+                multiplier = 1.5; 
+
+            } else if (time__min.textContent === 1 && time__secs.textContent <= 30) {
+                multiplier = 1.2; 
+                
+            } else {
+                multiplier = 1; 
+            }
+
             // Calculates the final score
             let Score = Math.round(score_sum * multiplier);
+            console.log(multiplier)
             finalScore.textContent = Score;
-            // return Score;
-
-        }
+        
     }
+     }
+        
 
 
 
@@ -293,8 +301,8 @@ const checkWin = () => {
 }
 
 
-const resetGame =  () => {
-   location.reload();
+const resetGame = () => {
+    location.reload();
 }
 
 
