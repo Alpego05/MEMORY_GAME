@@ -16,16 +16,10 @@ Bonificaciones de tiempo: La puntuación se multiplica dependiendo del tiempo qu
 - Interfaz de usuario: Al ganar el juego, se muestra la puntuación final junto con el nombre del jugador.
 Modo de reinicio: El jugador puede comenzar un nuevo juego después de completar uno.
 
-
 🦑 Cómo jugar :
 1. Al cargar el juego, se te pedirá ingresar tu nombre. Si no lo haces, se asignará un nombre aleatorio basado en animales.
-
 2. Se mostrarán tarjetas volteadas. Haz clic en ellas para revelar las imágenes.
-
 3. El objetivo es encontrar las parejas de imágenes iguales.
-
 4. Cuando hagas clic en una tarjeta, el temporizador comenzará. Se actualizará la puntuación de acuerdo con las reglas mencionadas.
-
 5. El juego termina cuando se han encontrado todas las parejas. Se mostrará tu puntuación final junto con el tiempo que tardaste en completar el juego.
-
-6- Puedes hacer clic en "JUGAR DE NUEVO" para reiniciar el juego.
+6. Puedes hacer clic en "JUGAR DE NUEVO" para reiniciar el juego.
